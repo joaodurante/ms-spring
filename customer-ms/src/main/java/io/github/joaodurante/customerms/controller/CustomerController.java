@@ -20,9 +20,9 @@ import java.util.Optional;
 public class CustomerController {
     private final CustomerService customerService;
 
-    @GetMapping("/healthcheck")
+    @GetMapping("/health-check")
     public String healthCheck() {
-        log.info("Healthcheck - OK");
+        log.info("Health-check - OK");
         return "OK";
     }
 
