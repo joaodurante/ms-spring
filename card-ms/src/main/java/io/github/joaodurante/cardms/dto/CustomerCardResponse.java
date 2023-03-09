@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class CustomerCardResponse {
     private String name;
     private String flag;
-    private Long limit;
+    private Long approvedLimit;
 
     public static CustomerCardResponse fromModel(CustomerCard model) {
         Card card = model.getCard();
