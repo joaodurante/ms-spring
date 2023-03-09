@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: credit-appraisal-ms
+
+server:
+  port: 0                                                                                           # random port to avoid ports conflicts
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}       # random value to avoid instances_ids conflicts
+    prefer-ip-address: true
