@@ -20,6 +20,8 @@ public class CloudGatewayMsApplication {
 		return builder
 				.routes()
 				.route(r -> r.path("/customer/**").uri("lb://customer-ms"))
+				.route(r -> r.path("/card/**").uri("lb://card-ms"))
+				.route(r -> r.path("/credit-appraisal/**").uri("lb://credit-appraisal-ms"))
 				.build();
 	}
 }

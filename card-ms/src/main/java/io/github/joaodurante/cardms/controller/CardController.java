@@ -1,8 +1,11 @@
 package io.github.joaodurante.cardms.controller;
 
 import io.github.joaodurante.cardms.domain.Card;
+import io.github.joaodurante.cardms.domain.CustomerCard;
 import io.github.joaodurante.cardms.dto.CardSaveRequest;
+import io.github.joaodurante.cardms.dto.CustomerCardResponse;
 import io.github.joaodurante.cardms.service.CardService;
+import io.github.joaodurante.cardms.service.CustomerCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -10,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController()
 @RequestMapping("card")
@@ -17,6 +21,7 @@ import java.util.List;
 @Slf4j
 public class CardController {
     private final CardService cardService;
+    private final CustomerCardService customerCardService;
 
     @GetMapping("/health-check")
     public String healthCheck() {
@@ -34,5 +39,15 @@ public class CardController {
     public ResponseEntity save(@RequestBody CardSaveRequest card) {
         cardService.save(card.toModel());
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping(value = "/findCardsByCpf", params = {"cpf"})
+    public ResponseEntity<List<CustomerCardResponse>> findCardsByCpf(@RequestParam("cpf") String cpf) {
+        List<CustomerCard> cards = customerCardService.findCardsByCpf(cpf);
+        List<CustomerCardResponse> response = cards.stream()
+                .map(CustomerCardResponse::fromModel)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(response);
     }
 }
