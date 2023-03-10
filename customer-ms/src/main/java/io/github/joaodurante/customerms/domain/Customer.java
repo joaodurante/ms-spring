@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -18,9 +18,9 @@ public class Customer {
     private Long id;
     private String cpf;
     private String name;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    public Customer(String cpf, String name, Date dateOfBirth) {
+    public Customer(String cpf, String name, LocalDate dateOfBirth) {
         this.cpf = cpf;
         this.name = name;
         this.dateOfBirth = dateOfBirth;

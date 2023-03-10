@@ -1,17 +1,15 @@
-package io.github.com.creditappraisalms.domain;
+package io.github.com.creditappraisalms.dto;
 
+import io.github.com.creditappraisalms.domain.CustomerCard;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class CustomerStatus {
-    private CustomerData customer;
+@AllArgsConstructor
+public class CustomerAppraisalResponse {
     private List<CustomerCard> cards;
 }

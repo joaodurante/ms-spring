@@ -2,11 +2,10 @@ package io.github.com.creditappraisalms.domain;
 
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
-public class CustomerData {
+public class Card {
     private Long id;
     private String name;
-    private LocalDate dateOfBirth;
+    private String flag;
+    private Long preApprovedLimit;
 }

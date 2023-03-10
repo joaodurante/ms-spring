@@ -4,7 +4,8 @@ import io.github.joaodurante.customerms.domain.Customer;
 import lombok.Data;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 public class CustomerSaveRequest {
@@ -13,11 +14,11 @@ public class CustomerSaveRequest {
     private String dateOfBirth;
 
     public Customer toModel() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return new Customer(
                 cpf,
                 name,
-                dateFormat.parse(dateOfBirth)
+                LocalDate.parse(dateOfBirth, formatter)
         );
     }
 }
