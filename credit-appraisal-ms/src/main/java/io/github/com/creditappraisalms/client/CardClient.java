@@ -11,9 +11,9 @@ import java.util.List;
 
 @FeignClient(value = "${ms.card.name}", path = "${ms.card.path}")
 public interface CardClient {
-    @GetMapping(value = "/findCardsByCpf", params = {"cpf"})
+    @GetMapping(value = "/find-cards-by-cpf", params = {"cpf"})
     ResponseEntity<List<CustomerCard>> findCardsByCpf(@RequestParam("cpf") String cpf);
 
-    @GetMapping(value = "/findByIncomeLessThanEqual", params = {"income"})
+    @GetMapping(value = "/find-by-income-less-than-equal", params = {"income"})
     ResponseEntity<List<Card>> findCardsByIncome(@RequestParam("income") Long income);
 }

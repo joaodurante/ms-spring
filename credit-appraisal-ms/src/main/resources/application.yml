@@ -1,6 +1,11 @@
 spring:
   application:
     name: credit-appraisal-ms
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 0                                                                                           # random port to avoid ports conflicts
@@ -20,3 +25,7 @@ ms:
   card:
     name: card-ms
     path: /card
+
+mq:
+  queues:
+    card-issuance: card-issuance

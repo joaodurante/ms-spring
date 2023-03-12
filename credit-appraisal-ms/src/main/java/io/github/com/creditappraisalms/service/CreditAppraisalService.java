@@ -3,9 +3,7 @@ package io.github.com.creditappraisalms.service;
 import feign.FeignException;
 import io.github.com.creditappraisalms.client.CardClient;
 import io.github.com.creditappraisalms.client.CustomerClient;
-import io.github.com.creditappraisalms.domain.Card;
-import io.github.com.creditappraisalms.domain.CustomerCard;
-import io.github.com.creditappraisalms.domain.CustomerData;
+import io.github.com.creditappraisalms.domain.*;
 import io.github.com.creditappraisalms.dto.CustomerAppraisalResponse;
 import io.github.com.creditappraisalms.dto.CustomerStatus;
 import io.github.com.creditappraisalms.ex.CustomerDataNotFoundException;
@@ -25,6 +23,7 @@ import java.util.stream.Collectors;
 public class CreditAppraisalService {
     private final CustomerClient customerClient;
     private final CardClient cardClient;
+
     public CustomerStatus checkCustomerStatus(String cpf) throws CustomerDataNotFoundException, MsCommunicationException {
         try {
             ResponseEntity<CustomerData> customer = customerClient.getCustomer(cpf);

@@ -25,7 +25,7 @@ public class CreditAppraisalController {
         return "OK";
     }
 
-    @GetMapping(value = "/customerStatus", params = {"cpf"})
+    @GetMapping(value = "/customer-status", params = {"cpf"})
     public ResponseEntity checkCustomerStatus(@RequestParam("cpf") String cpf) {
         try {
             CustomerStatus customerStatus = creditAppraisalService.checkCustomerStatus(cpf);
@@ -37,7 +37,7 @@ public class CreditAppraisalController {
         }
     }
 
-    @PostMapping("/appraiseCustomerCredit")
+    @PostMapping("/appraise-customer-credit")
     public ResponseEntity appraiseCustomerCredit(@RequestBody AppraisalData data) {
         try {
             CustomerAppraisalResponse appraisal = creditAppraisalService.appraiseCustomerCredit(data.getCpf(), data.getIncome());
@@ -48,5 +48,4 @@ public class CreditAppraisalController {
             return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
         }
     }
-
 }
