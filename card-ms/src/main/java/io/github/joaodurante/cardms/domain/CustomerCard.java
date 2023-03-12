@@ -16,4 +16,10 @@ public class CustomerCard {
     @JoinColumn(name = "id_card")
     private Card card;
     private Long approvedLimit;
+
+    public CustomerCard(String cpf, Card card, Long approvedLimit) {
+        this.cpf = cpf;
+        this.card = card;
+        this.approvedLimit = approvedLimit;
+    }
 }

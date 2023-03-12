@@ -29,7 +29,7 @@ public class CardController {
         return "OK";
     }
 
-    @GetMapping(value = "/findByIncomeLessThanEqual", params = {"income"})
+    @GetMapping(value = "/find-by-income-less-than-equal", params = {"income"})
     public ResponseEntity<List<Card>> findCardsByIncome(@RequestParam("income") Long income) {
         List<Card> cardList = cardService.findCardsByIncome(income);
         return ResponseEntity.ok(cardList);
@@ -41,7 +41,7 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping(value = "/findCardsByCpf", params = {"cpf"})
+    @GetMapping(value = "/find-cards-by-cpf", params = {"cpf"})
     public ResponseEntity<List<CustomerCardResponse>> findCardsByCpf(@RequestParam("cpf") String cpf) {
         List<CustomerCard> cards = customerCardService.findCardsByCpf(cpf);
         List<CustomerCardResponse> response = cards.stream()

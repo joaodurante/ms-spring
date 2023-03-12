@@ -16,6 +16,6 @@ public class CustomerCardResponse {
 
     public static CustomerCardResponse fromModel(CustomerCard model) {
         Card card = model.getCard();
-        return new CustomerCardResponse(card.getName(), card.getFlag().toString(), card.getPreApprovedLimit());
+        return new CustomerCardResponse(card.getName(), card.getFlag().toString(), model.getApprovedLimit());
     }
 }
