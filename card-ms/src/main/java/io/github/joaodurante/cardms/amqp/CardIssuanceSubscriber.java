@@ -6,12 +6,14 @@ import io.github.joaodurante.cardms.domain.CustomerCard;
 import io.github.joaodurante.cardms.repository.CardRepository;
 import io.github.joaodurante.cardms.repository.CustomerCardRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class CardIssuanceSubscriber {
     private final CardRepository cardRepository;
     private final CustomerCardRepository customerCardRepository;
@@ -30,7 +32,8 @@ public class CardIssuanceSubscriber {
             customerCardRepository.save(customerCard);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to receive card issuance request: {}", e.getMessage());
+            log.error(e.toString());
         }
     }
 }
