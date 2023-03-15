@@ -8,4 +8,4 @@ WORKDIR /app
 COPY --from=build ./build/target/*.jar ./application.jar
 EXPOSE 8761
 ARG EUREKA_HOST=ms-eureka
-ENTRYPOINT java -jar application.jar
+ENTRYPOINT java -jar -Dspring.profiles.active=prod application.jar

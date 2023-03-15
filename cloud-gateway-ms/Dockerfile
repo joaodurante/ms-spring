@@ -11,4 +11,4 @@ ARG KEYCLOAK_HOST=ms-keycloak
 ARG KEYCLOAK_PORT=8081
 ARG KEYCLOAK_REALM=ms-spring-realm
 ARG EUREKA_HOST=ms-eureka
-ENTRYPOINT java -jar application.jar
+ENTRYPOINT java -jar -Dspring.profiles.active=prod application.jar

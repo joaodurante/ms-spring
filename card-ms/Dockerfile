@@ -9,4 +9,4 @@ COPY --from=build ./build/target/*.jar ./application.jar
 EXPOSE 8761
 ARG RABBITMQ_HOST=ms-rabbitmq
 ARG EUREKA_HOST=ms-eureka
-ENTRYPOINT java -jar application.jar
+ENTRYPOINT java -jar -Dspring.profiles.active=prod application.jar
